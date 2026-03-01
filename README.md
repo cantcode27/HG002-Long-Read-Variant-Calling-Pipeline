@@ -166,8 +166,9 @@ samtools flagstat hg002.sorted.bam
 - **What it does:** Clair3 uses a deep neural network to examine the aligned reads and identify positions where this individual's genome differs from the reference. It outputs a VCF (Variant Call Format) file — a standardized format that lists all detected variants with quality scores and metadata.
 - **Output:** `clair3.vcf.gz (+ index .tbi)`
 - Clair3 was run using containerized execution within SLURM.
-- **DeepVariant:**
--  **What it does: **DeepVariant uses a deep learning model to convert aligned reads into candidate variant sites, then classifies each candidate as a SNP/INDEL with genotype likelihoods. It produces a VCF file containing short variants (SNVs and small INDELs) with quality and supporting annotations. DeepVariant is designed to generalize across sequencing technologies using pretrained models (here, long-read PacBio/HiFi mode).
+
+ **DeepVariant:**
+-** What it does:** DeepVariant uses a deep learning model to convert aligned reads into candidate variant sites, then classifies each candidate as a SNP/INDEL with genotype likelihoods. It produces a VCF file containing short variants (SNVs and small INDELs) with quality and supporting annotations. DeepVariant is designed to generalize across sequencing technologies using pretrained models (here, long-read PacBio/HiFi mode).
   - **Output:** `deepvariant.vcf.gz (+ index .tbi)`
   - DeepVariant was run using containerized execution within SLURM.
 ---
