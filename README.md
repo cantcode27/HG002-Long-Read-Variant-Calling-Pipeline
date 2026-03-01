@@ -161,12 +161,15 @@ samtools flagstat hg002.sorted.bam
 - **What it does:** Generates a summary of alignment quality — how many reads were mapped successfully, how many failed, duplication rate, etc. This is a crucial sanity check to confirm the alignment worked correctly before proceeding to variant calling.
 - **Output:** `hg002.flagstat.txt`
 
-### Step 6 — Variant Calling (Clair3)
-
+### Step 6 — Variant Calling 
+**Clair3:**
 - **What it does:** Clair3 uses a deep neural network to examine the aligned reads and identify positions where this individual's genome differs from the reference. It outputs a VCF (Variant Call Format) file — a standardized format that lists all detected variants with quality scores and metadata.
-- **Output:** `output.vcf`
+- **Output:** `clair3.vcf.gz (+ index .tbi)`
 - Clair3 was run using containerized execution within SLURM.
-
+**DeepVariant:**
+  **What it does: **DeepVariant uses a deep learning model to convert aligned reads into candidate variant sites, then classifies each candidate as a SNP/INDEL with genotype likelihoods. It produces a VCF file containing short variants (SNVs and small INDELs) with quality and supporting annotations. DeepVariant is designed to generalize across sequencing technologies using pretrained models (here, long-read PacBio/HiFi mode).
+  - **Output:** `deepvariant.vcf.gz (+ index .tbi)`
+  - DeepVariant was run using containerized execution within SLURM.
 ---
 
 ## HPC Execution Model
@@ -368,7 +371,10 @@ All workflow stages completed successfully:
 | align | Aligned reads to reference | ✔ Completed |
 | sort_index | Sorted and indexed the BAM file | ✔ Completed |
 | flagstat | Generated alignment QC statistics | ✔ Completed |
-
+| clair3.vcf.gz | compressed VCF of called variants | ✔ Completed |
+| clair3.vcf.gz.tbi | tabix index for fast region queries and benchmarking tools | ✔ Completed |
+| deepvariant.vcf.gz | compressed VCF of called variants | ✔ Completed |
+| deepvariant.vcf.gz.tbi | tabix index for fast region queries and benchmarking tools | ✔ Completed |
 ---
 
 ## Generated Outputs
@@ -382,7 +388,14 @@ All output files are located in the `results/` directory after a successful run.
 | `nf_report.html` | Nextflow execution report with resource usage graphs | Open in any web browser |
 | `nf_timeline.html` | Visual timeline showing when each task ran | Open in any web browser |
 | `nf_trace.txt` | Tab-separated log of CPU, memory, and time per task | `cat results/nf_trace.txt` or open in Excel |
-
+| clair3.vcf.gz | compressed VCF of called variants | singularity exec docker://quay.io/biocontainers/bcftools:1.17--h00cdaf9_0 \
+bcftools view results/clair3.vcf.gz |
+| clair3.vcf.gz.tbi | tabix index for fast region queries and benchmarking tools | singularity exec docker://quay.io/biocontainers/bcftools:1.17--h00cdaf9_0 \
+bcftools view results/clair3.vcf.gz.tbi |
+| deepvariant.vcf.gz | compressed VCF of called variants | singularity exec docker://quay.io/biocontainers/bcftools:1.17--h00cdaf9_0 \
+bcftools view results/deepvariant.vcf.gz |
+| deepvariant.vcf.gz.tbi | tabix index for fast region queries and benchmarking tools | singularity exec docker://quay.io/biocontainers/bcftools:1.17--h00cdaf9_0 \
+bcftools view results/deepvariant.vcf.gz.tbi |
 **Alignment statistics from our run:**
 
 - **45,266** total reads processed
