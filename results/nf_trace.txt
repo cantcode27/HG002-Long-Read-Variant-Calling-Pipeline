@@ -1,0 +1,5 @@
+task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	peak_vmem	rchar	wchar
+2	ac/8e2d94	1724	faidx (faidx)	COMPLETED	0	2026-02-28 22:57:06.263	59.3s	32s	71.6%	6.2 MB	12 MB	3 GB	19.1 KB
+1	fd/5657da	1723	align (align)	COMPLETED	0	2026-02-28 22:57:06.107	4m 4s	3m 5s	479.7%	18.2 GB	19.8 GB	3.9 GB	873.2 MB
+3	e8/675be4	1725	sort_index (sort_index)	COMPLETED	0	2026-02-28 23:01:11.139	1m 1s	9s	566.6%	681.2 MB	7.4 GB	1.5 GB	638.5 MB
+4	ee/2906fb	1726	flagstat (flagstat)	COMPLETED	0	2026-02-28 23:02:13.074	24.5s	3s	98.5%	6.5 MB	12 MB	317.7 MB	692 B
