@@ -95,7 +95,7 @@ All tools were run inside **Singularity containers** pulled from Docker registri
 | **samtools** | Converts, sorts, indexes, and generates statistics for alignment files | latest | `docker://quay.io/biocontainers/samtools` |
 | **Clair3** | Deep learning-based variant caller optimized for long reads | latest | `docker://hkubal/clair3` |
 | **Singularity** | Runs Docker containers on HPC systems (where Docker isn't allowed) | — | System module |
-
+| **DeepVariant** |Deep neural nwtwork learning based next generation seuencing variant caller | latest | `docker://hkubal/deepvariant` |
 ---
 
 ## Pipeline Architecture
