@@ -169,7 +169,7 @@ samtools flagstat hg002.sorted.bam
 
  **DeepVariant:**
  
- ** What it does:** DeepVariant uses a deep learning model to convert aligned reads into candidate variant sites, then classifies each candidate as a SNP/INDEL with genotype likelihoods. It produces a VCF file containing short variants (SNVs and small INDELs) with quality and supporting annotations. DeepVariant is designed to generalize across sequencing technologies using pretrained models (here, long-read PacBio/HiFi mode).
+- **What it does:**   DeepVariant uses a deep learning model to convert aligned reads into candidate variant sites, then classifies each candidate as a SNP/INDEL with genotype likelihoods. It produces a VCF file containing short variants (SNVs and small INDELs) with quality and supporting annotations. DeepVariant is designed to generalize across sequencing technologies using pretrained models (here, long-read PacBio/HiFi mode).
   - **Output:** `deepvariant.vcf.gz (+ index .tbi)`
   - DeepVariant was run using containerized execution within SLURM.
 ---
