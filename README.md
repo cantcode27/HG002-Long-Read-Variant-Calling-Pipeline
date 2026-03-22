@@ -570,7 +570,7 @@ This document is written for someone with **zero prior knowledge** of Nextflow, 
 - A complete troubleshooting table with common HPC-specific errors and fixes
 - Pipeline flow diagrams, HPC architecture diagrams, and container concept illustrations
 
-> The LaTeX source (`report.tex`) is also included if you want to modify or extend the document.
+
 
 ---
 
